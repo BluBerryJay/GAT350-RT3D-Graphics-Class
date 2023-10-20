@@ -9,6 +9,7 @@ namespace nc
 		// create systems
 		m_systems.push_back(std::move(std::make_unique<Renderer>()));
 		m_systems.push_back(std::move(std::make_unique<InputSystem>()));
+		m_systems.push_back(std::move(std::make_unique<Gui>()));
 
 		// initialize systems
 		for (auto& system : m_systems)
@@ -16,8 +17,8 @@ namespace nc
 			system->Initialize();
 		}
 
-		GetSystem<Renderer>()->CreateWindow("GAT350", 800, 600);
-
+		GetSystem<Renderer>()->CreateWindow("My Name Is Deez", 1280, 720);
+		std::cout << "================" << "\n" << "Initialized Engine" << "\n" << "================" << std::endl;
 		return true;
 	}
 
@@ -37,7 +38,7 @@ namespace nc
 		// update sdl events
 		SDL_Event event;
 		SDL_PollEvent(&event);
-		
+		GetSystem<Gui>()->ProcessEvent(event);
 		// update time
 		m_time.Tick();
 
@@ -46,7 +47,7 @@ namespace nc
 		{
 			system->Update();
 		}
-
+		std::cout << "================" << "\n" << "Updated Engine" << "\n" << "================" << std::endl;
 		m_quit = GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_ESCAPE);
 	}
 }
