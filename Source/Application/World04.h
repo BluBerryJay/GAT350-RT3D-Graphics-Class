@@ -4,8 +4,23 @@
 #include "Renderer/Renderer.h"
 #include "Core/Math/Transform.h"
 #include <vector>
+
 namespace nc
 {
+	struct light_t {
+		enum eType {
+			Point,
+			Directional,
+			Spot
+		};
+		eType type;
+		glm::vec3 position;
+		glm::vec3 direction;
+		float innerAngle;
+		float outerAngle;
+		glm::vec3 color;
+		float cutoff;
+	};
 	class World04 : public World
 	{
 	public:
@@ -23,9 +38,9 @@ namespace nc
 		res_t<Model> m_model;
 		
 		
+		light_t m_light;
 		glm::vec3 ambientLight;
-		glm::vec3 diffuseLight;
-		glm::vec3 lightPosition;
+		
 
 	};
 }

@@ -160,7 +160,7 @@ namespace nc
 		switch (severity)
 		{
 		case GL_DEBUG_SEVERITY_HIGH:
-			//ASSERT_LOG(0, "OPENGL Source: " << sourceString << " Type: " << typeString << "(" << id << ") | " << message);
+			ASSERT_LOG(0, "OPENGL Source: " << sourceString << " Type: " << typeString << "(" << id << ") | " << message);
 			break;
 		case GL_DEBUG_SEVERITY_MEDIUM:
 			ERROR_LOG("OPENGL Source: " << sourceString << " Type: " << typeString << "(" << id << ") | " << message);

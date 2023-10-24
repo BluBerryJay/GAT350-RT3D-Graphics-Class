@@ -10,19 +10,19 @@ namespace nc
 {
     bool World04::Initialize()
     {
-        auto material = GET_RESOURCE(Material, "Materials/grid.mtrl");
-        /*m_program->Use();
-        m_program = GET_RESOURCE(Program, "Shaders/unlit_texture.prog");
-        m_texture = GET_RESOURCE(Texture, "Textures/Llama.png");
-        m_texture->Bind();
-        m_texture->SetActive(GL_TEXTURE0);*/
-
-        
+       auto material = GET_RESOURCE(Material, "Materials/grid.mtrl");
+                
         m_model = std::make_shared<Model>();
         m_model->SetMaterial(material);
-        m_model->Load("Models/cube.obj", glm::vec3{ 0 }, glm::vec3{ -90, 0, 0 }, glm::vec3{ 1 });
+        m_model->Load("Models/cube.obj");
         // vertex data
-        
+        m_light.type = light_t::eType::Point;
+        m_light.position = glm::vec3{ 0,5,0 };
+        m_light.color = glm::vec3{ 1 };
+        m_light.innerAngle = 10.0f;
+        m_light.outerAngle = 30.0f;
+        m_light.direction = glm::vec3{ 0, -1, 0 };
+        m_light.cutoff = glm::radians(30.0f);
         std::cout << "================" << "\n" << "Initialized World04" << "\n" << "================" << std::endl;
         return true;
     }
@@ -41,8 +41,18 @@ namespace nc
         ImGui::End();
        
         ImGui::Begin("Light");
-        ImGui::DragFloat3("Position", glm::value_ptr(lightPosition), 0.1f);
-        ImGui::ColorEdit3("Diffuse light", glm::value_ptr(diffuseLight));
+        const char* types[] = {"Point", "Directional", "Spot"};
+        ImGui::Combo("Type", (int*)(&m_light.type), types, 3);
+
+        if (m_light.type != light_t::Directional) ImGui::DragFloat3("Position", glm::value_ptr(m_light.position), 0.1f);
+        if (m_light.type != light_t::Point) ImGui::DragFloat3("Direction", glm::value_ptr(m_light.direction), 0.1f);
+        if (m_light.type != light_t::Spot) {
+            
+            ImGui::DragFloat3("Inner Angle", &m_light.innerAngle, 1, 0, m_light.outerAngle);
+            ImGui::DragFloat3("Outer Angle", &m_light.outerAngle, 1, 0, m_light.innerAngle);
+        }
+        ImGui::DragFloat3("Color", glm::value_ptr(m_light.color), 0.1f);
+        
         ImGui::ColorEdit3("Ambient Light", glm::value_ptr(ambientLight));
         ImGui::End();
         
@@ -52,9 +62,14 @@ namespace nc
         material->Bind();
 
         
-        material->GetProgram()->SetUniform("light.position", lightPosition);
+        material->GetProgram()->SetUniform("light.type", m_light.type);
+        material->GetProgram()->SetUniform("light.position", m_light.position);
+        material->GetProgram()->SetUniform("light.direction", m_light.direction);
+        material->GetProgram()->SetUniform("light.innerAngle", m_light.innerAngle);
+        material->GetProgram()->SetUniform("light.outerAngle", m_light.outerAngle);
+        material->GetProgram()->SetUniform("light.color", m_light.color);
+        
         material->GetProgram()->SetUniform("ambientLight", ambientLight);
-        material->GetProgram()->SetUniform("light.color", diffuseLight);
         
         m_transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D) ? m_speed * -dt : 0;
         m_transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? m_speed * +dt : 0;

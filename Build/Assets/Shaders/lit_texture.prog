@@ -1,4 +1,4 @@
 {
-	"vertexShader": "shaders/lit_texture.vert",
-	"fragmentShader": "shaders/lit_texture.frag"
+	"vertexShader": "Shaders/lit_texture.vert",
+	"fragmentShader": "Shaders/lit_texture.frag"
 }

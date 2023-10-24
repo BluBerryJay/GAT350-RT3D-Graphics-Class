@@ -11,11 +11,17 @@ namespace nc
 		ImGui::CreateContext();
 		ImGuiIO& io = ImGui::GetIO();
 
+
+
 		const char* glsl_version = "#version 430";
 		ImGui_ImplOpenGL3_Init(glsl_version);
 		ImGui_ImplSDL2_InitForOpenGL(ENGINE.GetSystem<Renderer>()->m_window, ENGINE.GetSystem<Renderer>()->m_context);
 
+
+
 		ImGui::StyleColorsDark();
+
+
 
 		return true;
 	}

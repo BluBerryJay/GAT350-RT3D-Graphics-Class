@@ -1,5 +1,8 @@
 #version 430
 
+#define POINT 0
+#define DIRECTIONAL 1
+#define SPOT 2
 
 in layout(location = 0) vec3 fposition;
 in layout(location = 1) vec3 fnormal;

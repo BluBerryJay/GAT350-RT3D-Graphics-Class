@@ -9,7 +9,8 @@ namespace nc
 		// create systems
 		m_systems.push_back(std::move(std::make_unique<Renderer>()));
 		m_systems.push_back(std::move(std::make_unique<InputSystem>()));
-		m_systems.push_back(std::move(std::make_unique<Gui>()));
+
+
 
 		// initialize systems
 		for (auto& system : m_systems)
@@ -17,7 +18,14 @@ namespace nc
 			system->Initialize();
 		}
 
+
+
 		GetSystem<Renderer>()->CreateWindow("My Name Is Deez", 1280, 720);
+		m_systems.push_back(std::move(std::make_unique<Gui>()));
+		GetSystem<Gui>()->Initialize();
+
+
+
 		std::cout << "================" << "\n" << "Initialized Engine" << "\n" << "================" << std::endl;
 		return true;
 	}

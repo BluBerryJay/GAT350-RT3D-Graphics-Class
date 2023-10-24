@@ -13,11 +13,13 @@ out layout(location = 3) vec4 ocolor;
 uniform mat4 model; 
 uniform mat4 projection; 
 uniform mat4 view; 
+
 uniform struct Material
 {
 	vec3 diffuse;
 	vec3 specular;
 	float shininess;
+
 	vec2 offset;
 	vec2 tiling;
 
@@ -26,6 +28,7 @@ uniform struct Light {
 	vec3 position;
 	vec3 color;
 } light;
+
 vec3 ambientLight = vec3(0.2, 0.2, 0.2);
 
 vec3 diffuseLight = vec3(1, 1, 1);
