@@ -1,2 +1,6 @@
 INFO: Main.cpp(13) Initialize Engine...
-WARNING: Model.cpp(25) Could not load assimp file %sUnable to open file "Models/cube.obj".
+WARNING: FileIO.cpp(43) File not loaded: Shaders/multi_lit_texture.prog
+WARNING: Json.cpp(14) Cannot open file: Shaders/multi_lit_texture.prog
+ERROR: Program.cpp(21) Could not load program file: Shaders/multi_lit_texture.prog
+WARNING: ResourceManager.h(41) Could not create resource: Shaders/multi_lit_texture.prog
+WARNING: Model.cpp(25) Could not load assimp file %sUnable to open file "Models/plane.obj".

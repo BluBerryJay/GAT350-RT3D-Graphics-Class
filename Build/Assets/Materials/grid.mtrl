@@ -1,5 +1,5 @@
 {
-  "program":"Shaders/lit_texture.prog",
+  "program":"Shaders/multi_lit_texture.prog",
   "textures": [ "Textures/color_grid.png" ],
   "color":[
       1,

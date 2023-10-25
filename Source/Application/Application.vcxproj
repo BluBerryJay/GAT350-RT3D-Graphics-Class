@@ -158,6 +158,9 @@
     <ClInclude Include="World04.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\GAT350-RT3D-Graphics-Class-master\Build\Assets\Shaders\multi_lit_texture.prog" />
+    <None Include="..\..\..\GAT350-RT3D-Graphics-Class-master\Build\Assets\Shaders\multi_lit_texture.vert" />
+    <None Include="..\..\..\GAT350-RT3D-Graphics-Class-master\Build\Assets\Shaders\mutli_lit_texture.frag" />
     <None Include="..\..\Build\Assets\Shaders\lit_texture.frag" />
     <None Include="..\..\Build\Assets\Shaders\lit_texture.prog" />
     <None Include="..\..\Build\Assets\Shaders\lit_texture.vert" />

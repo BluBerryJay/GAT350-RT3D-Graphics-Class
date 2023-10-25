@@ -21,6 +21,9 @@ namespace nc
 		READ_DATA(document, program);
 		// get program resource
 		m_program = GET_RESOURCE(Program, program);
+		if (m_program) {
+			std::cout << "Console Log M_Program";
+		}
 
 		// read the textures name
 		std::vector<std::string> textures;
@@ -31,7 +34,7 @@ namespace nc
 			m_textures.push_back(GET_RESOURCE(Texture, texture));
 		}
 		//READ_DATA(document, color);
-		READ_DATA(document, position);
+		//READ_DATA(document, position);
 		READ_DATA(document, diffuse);
 		READ_DATA(document, specular);
 		READ_DATA(document, shininess);
@@ -46,7 +49,7 @@ namespace nc
 		m_program->Use();
 		m_program->SetUniform("material.diffuse", diffuse);
 		//m_program->SetUniform("light.color", color);
-		m_program->SetUniform("light.position", position);
+		//m_program->SetUniform("light.position", position);
 		m_program->SetUniform("material.specular", specular);
 		m_program->SetUniform("material.shininess", shininess);
 		m_program->SetUniform("material.offset", offset);
@@ -66,7 +69,7 @@ namespace nc
 		//ImGui::ColorEdit3("Color", glm::value_ptr(color));
 		ImGui::ColorEdit3("Diffuse", glm::value_ptr(diffuse));
 		ImGui::ColorEdit3("Specular", glm::value_ptr(specular));
-		ImGui::ColorEdit3("Position", glm::value_ptr(position));
+		//ImGui::ColorEdit3("Position", glm::value_ptr(position));
 		ImGui::DragFloat("Shininess", &shininess, 0.1f, 2.0f, 200.0f);
 		ImGui::DragFloat2("Tiling", glm::value_ptr(tiling));
 		ImGui::DragFloat2("Offset", glm::value_ptr(offset));

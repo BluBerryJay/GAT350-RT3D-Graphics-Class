@@ -74,5 +74,14 @@
     <None Include="..\..\Build\Assets\Shaders\unlit_multi_texture.prog">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="..\..\..\GAT350-RT3D-Graphics-Class-master\Build\Assets\Shaders\multi_lit_texture.prog">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\..\GAT350-RT3D-Graphics-Class-master\Build\Assets\Shaders\multi_lit_texture.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\..\GAT350-RT3D-Graphics-Class-master\Build\Assets\Shaders\mutli_lit_texture.frag">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
