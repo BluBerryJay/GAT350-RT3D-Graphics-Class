@@ -14,7 +14,8 @@ int main(int argc, char* argv[])
 
 	//nc::MemoryTracker::Initialize();
 	nc::seedRandom((unsigned int)time(nullptr));
-	nc::setFilePath("assets");
+	nc::setFilePath("Assets");
+	std::cout << "the file path: " << nc::getFilePath() << std::endl;
 
 	ENGINE.Initialize();
 	//cout << glGetString(GL_EXTENSIONS) << endl;
